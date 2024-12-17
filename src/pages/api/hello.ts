@@ -1,13 +1,12 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import type { NextApiRequest, NextApiResponse } from 'next'
+import type { NextApiRequest, NextApiResponse } from "next";
 
-type Data = {
-  name: string
-}
+const DELAY_TIME = 2000;
 
-export default function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<Data>
-) {
-  res.status(200).json({ name: 'John Doe' })
+export default async function handler(req: any, res: any) {
+  // 100ms 뒤에 응답 반환
+  setTimeout(() => {
+    res
+      .status(200)
+      .json({ message: `This response was delayed by ${DELAY_TIME}ms` });
+  }, DELAY_TIME);
 }
